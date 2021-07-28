@@ -1,0 +1,22 @@
+<p>{{title | titlecase}}</p>
+
+<button (click)="showProduct()">List Products</button>
+
+<!--<ul>-->
+<!--  <li *ngFor="let product of products" (click)="onSelect(product)">-->
+<!--    <span class="badge">{{product.id}}</span>{{product.name}}-->
+<!--  </li>-->
+
+<!--</ul>-->
+
+<!--<p>Selected Product</p>-->
+<table>
+  <th>ID</th><th>Name</th><th>Description</th>
+  <tr *ngFor="let product of selectedProduct" (click)="onSelect(product)">
+    <td>{{product.id}}</td>
+    <td>{{product.name}}</td>
+    <td>{{product.description}}</td>
+  </tr>
+</table>
+
+
