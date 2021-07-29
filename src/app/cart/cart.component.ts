@@ -14,4 +14,7 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  submit(): void{
+    alert('submitted');
+  }
 }

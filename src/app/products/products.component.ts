@@ -45,8 +45,34 @@ export class ProductsComponent implements OnInit {
   }
 
   onSelect(product: Product): void {
-    this.itemDtoList.push({itemId: 0, productId: product.id, quantity: 1});
+    let prodIndex = this.itemDtoList.findIndex(e => e.productId === product.id );
+
+    if (prodIndex > -1){
+      this.itemDtoList[prodIndex].quantity = this.itemDtoList[prodIndex].quantity +1;
+    }else {
+
+      this.itemDtoList.push({
+        itemId: 0,
+        productId: product.id,
+        productName: product.name,
+        productDescription: product.description,
+        quantity: 1
+      });
+    }
     this.cart.itemDtoList = this.itemDtoList;
+    const tempCart = new Cart();
+    tempCart.userId = 1;
+    tempCart.itemDtoList = new Array<Item>();
+    tempCart.itemDtoList.push({
+      itemId: 0,
+      productId: product.id,
+      productName: product.name,
+      productDescription: product.description,
+      quantity: 1
+    });
+
+    this.productsService.addItemToCart(tempCart);
+    prodIndex = -1;
   }
 
 

@@ -2,10 +2,12 @@
 
 
 <table>
-  <th>ID</th><th>ProductId</th><th>Quantity</th>
+  <th>Name</th><th>Description</th><th>Quantity</th>
   <tr *ngFor="let product of model.itemDtoList">
-    <td>{{product.itemId}}</td>
-    <td>{{product.productId}}</td>
+    <td>{{product.productName}}</td>
+    <td>{{product.productDescription}}</td>
     <td>{{product.quantity}}</td>
   </tr>
 </table>
+
+<button (click)="submit()">Submit</button>
