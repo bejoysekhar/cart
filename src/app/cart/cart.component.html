@@ -1,1 +1,11 @@
-<p>cart works!</p>
+<p>Cart</p>
+
+
+<table>
+  <th>ID</th><th>ProductId</th><th>Quantity</th>
+  <tr *ngFor="let product of model.itemDtoList">
+    <td>{{product.itemId}}</td>
+    <td>{{product.productId}}</td>
+    <td>{{product.quantity}}</td>
+  </tr>
+</table>

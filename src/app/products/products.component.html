@@ -12,11 +12,13 @@
 <!--<p>Selected Product</p>-->
 <table>
   <th>ID</th><th>Name</th><th>Description</th>
-  <tr *ngFor="let product of selectedProduct" (click)="onSelect(product)">
+  <tr *ngFor="let product of selectedProduct">
     <td>{{product.id}}</td>
     <td>{{product.name}}</td>
     <td>{{product.description}}</td>
+    <td><button (click)="onSelect(product)">Add to Cart</button> </td>
   </tr>
 </table>
 
 
+<app-cart [model]="cart"></app-cart>

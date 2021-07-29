@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Product} from './product';
 import {PRODUCTS} from './mock-products';
 import {ProductsService} from './products.service';
+import {Cart} from '../cart/cart';
+import {Item} from '../cart/item';
 
 @Component({
   selector: 'app-products',
@@ -14,15 +16,24 @@ export class ProductsComponent implements OnInit {
 
   products = PRODUCTS;
 
+
   product: Product = {
     id: 1,
     name: 'HP Laptop',
     description: 'HP Laptop Description'
   };
 
-  selectedProduct?: Product[];
+  selectedProduct: Product[];
+  cart: Cart;
+  itemDtoList: Item[];
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService) {
+
+    this.cart = new Cart();
+    this.cart.userId = 1;
+
+    this.itemDtoList = new Array<Item>();
+  }
 
   ngOnInit(): void {
   }
@@ -34,8 +45,8 @@ export class ProductsComponent implements OnInit {
   }
 
   onSelect(product: Product): void {
-    // this.selectedProduct = product;
-    this.showProduct();
+    this.itemDtoList.push({itemId: 0, productId: product.id, quantity: 1});
+    this.cart.itemDtoList = this.itemDtoList;
   }
 
 
